@@ -148,7 +148,7 @@ export default function Home() {
           </h4>
         </div>
         <div className=" w-[300px] h-[300px]">
-          <Image src='/file.png ' width={400} height={400} />
+          <Image src='/file.png ' width={400} height={400} alt='file' title='file'/>
         </div>
       </div>
       <div className=" flex md:flex-row flex-col1  space-y-4 justify-around items-center py-4 my-2 mx-4 font-normal md:h-[60vh] h-auto ">
