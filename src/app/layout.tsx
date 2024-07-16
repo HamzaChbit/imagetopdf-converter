@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import NavBar  from "../components/NavBar";
+import NavBar from "../components/NavBar";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -45,14 +45,23 @@ export const metadata: Metadata = {
   icons: {
     icon: ['/favicon.ico?v=1'],
     apple: ['/apple-touch-icon.png?v=4'],
-    shortcut: ['/apple-touch-icon.png']
+    shortcut: ['/apple-touch-icon.png'],
   },
   authors: [{ name: "image-to-pdf-converter" }],
   creator: "image-to-pdf-converter",
   publisher: "image-to-pdf-converter",
   manifest: '/site.webmanifest',
   twitter: {
-    card: "summary_large_image"
+    card: "summary_large_image",
+    site: "@yourtwitterhandle",
+    title: "Convert Image to PDF Online: Fast & Free Tool",
+    description: "Effortlessly convert images to PDF with our online converter tool. Enjoy high-quality PDF outputs without any loss in image resolution or quality.",
+    images: [
+      {
+        url: "https://imagetopdf-converter.vercel.app/opengraph-image.jpg",
+        alt: "Convert Image to PDF Online",
+      },
+    ],
   },
   openGraph: {
     title: 'Convert Image to PDF Online: Fast & Free Tool',
@@ -60,10 +69,17 @@ export const metadata: Metadata = {
     url: "https://imagetopdf-converter.vercel.app",
     siteName: "Convert Image to PDF Online: Fast & Free Tool",
     type: "website",
+    images: [
+      {
+        url: "https://imagetopdf-converter.vercel.app/opengraph-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Convert Image to PDF Online",
+      },
+    ],
   },
   robots: "index, follow",
 };
-
 
 export default function RootLayout({
   children,
@@ -74,8 +90,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NavBar/>
-        
-        {children}</body>
+        {children}
+      </body>
     </html>
   );
 }
