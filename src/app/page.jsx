@@ -123,7 +123,7 @@ export default function Home() {
           <h4 className='py-2'>
             1: How do I add images?
             <br />
-            A: Click on the "Add Images" button and select one or more images from your device.
+            A: Click on the &quot; Add Images &quot; button and select one or more images from your device.
           </h4>
           <h4 className='py-2'>
             2: Can I remove images before converting?
@@ -133,12 +133,12 @@ export default function Home() {
           <h4 className='py-2'>
             3: How do I download the PDF?
             <br />
-            A: After conversion, click the "Download PDF" link below the image preview area.
+            A: After conversion, click the &quot;Download PDF&quot; link below the image preview area.
           </h4>
           <h4 className='py-2'>
             4: What if I want to start over?
             <br />
-            A: Click the "Clear Images" button to remove all selected images.
+            A: Click the &quot;Clear Images&quot; button to remove all selected images.
           </h4>
           <h3>Usage Tips</h3>
           <h4 className='py-2'>
@@ -287,7 +287,7 @@ You can easily convert from images to PDF format using this online free images t
     </p>
   </details>
 
-  {/* Add more FAQ items as needed */}
+
 </div>
 
 
