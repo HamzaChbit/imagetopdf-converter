@@ -60,6 +60,7 @@ export default function Home() {
       setPdfDownloadLink(doc.output('bloburl'));
     } catch (error) {
       console.error('Error converting images to PDF:', error);
+      // Handle error: Show a message to the user
     } finally {
       setIsConverting(false);
     }
@@ -81,7 +82,6 @@ export default function Home() {
   useEffect(() => {
     renderImages();
   }, [imageFiles]);
-
   return (
     <div className="container mx-auto ">
      <div className='flex justify-center items-center '>
