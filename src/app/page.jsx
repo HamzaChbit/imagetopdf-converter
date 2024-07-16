@@ -1,6 +1,5 @@
 "use client"
 
-import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -44,13 +43,13 @@ export default function Home() {
     setIsConverting(true);
 
     try {
-      const jsPDF = (await import('jspdf')).default; // Lazy load jsPDF on the client-side
+      const { default: jsPDF } = await import('jspdf');
       const doc = new jsPDF();
       const pageWidth = doc.internal.pageSize.getWidth() - 20;
 
       for (let i = 0; i < imageFiles.length; i++) {
         const imageData = await loadImage(imageFiles[i].file);
-        doc.addImage(imageData, 'JPEG', 10, 10, pageWidth, 0); // Adjust as needed
+        doc.addImage(imageData, 'JPEG', 10, 10, pageWidth, 0);
         if (i !== imageFiles.length - 1) {
           doc.addPage();
         }
@@ -85,7 +84,7 @@ export default function Home() {
   return (
     <div className="container mx-auto ">
      <div className='flex justify-center items-center '>
-          <h1 className='text-3xl font-medium py-4 px-2 my-8'>Convert images to PDF?</h1>
+          <h2 className='text-3xl font-medium py-4 px-2 my-8'>Convert images to PDF?</h2>
         </div>
       <div className="py-4 flex md:flex-row flex-col justify-center border-2 my-8">
       
@@ -164,7 +163,7 @@ You can easily convert from images to PDF format using this online free images t
       </div>
 
       <div className="container py-7  md:h-[60vh] h-auto ">
-  <h1 className="text-3xl font-bold mb-4">Frequently Asked Questions (FAQ)</h1>
+  <h2 className="text-3xl font-bold mb-4">Frequently Asked Questions (FAQ)</h2>
 
   <details className="group rounded-lg bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden" open>
     <summary className="flex cursor-pointer items-center justify-between gap-1.5 text-gray-900">
