@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: 'https://imagetopdf-converter.vercel.app/',
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: 'yearly',
       priority: 1,
     },
     
