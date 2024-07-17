@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import NavBar from "../components/NavBar";
 import "./globals.css";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -78,7 +79,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-  robots: "index, follow",
+  robots: "all",
 };
 
 export default function RootLayout({
@@ -88,6 +89,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+    <Head>
+    <meta name="robots" content="all" />
+    <link rel="canonical" href="https://imagetopdf-converter.vercel.app" />
+
+    </Head>
       <body className={inter.className}>
         <NavBar/>
         {children}
