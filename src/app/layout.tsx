@@ -92,7 +92,7 @@ export default function RootLayout({
     <Head>
     <meta name="robots" content="all" />
     <link rel="canonical" href="https://imagetopdf-converter.vercel.app" />
-
+  
     </Head>
       <body className={inter.className}>
         <NavBar/>

@@ -1,92 +1,16 @@
-"use client"
 
-import { useState, useEffect } from 'react';
 
-export default function Home() {
-  const [imageFiles, setImageFiles] = useState([]);
-  const [pdfDownloadLink, setPdfDownloadLink] = useState('');
-  const [isConverting, setIsConverting] = useState(false);
 
-  // Function to load image as base64 data url
-  const loadImage = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        resolve(reader.result);
-      };
-      reader.onerror = reject; // Handle FileReader errors
-    });
-  };
+import { Suspense } from 'react';
+import Hero from '../components/Hero'
+export default  function Home() {
 
-  // Function to render the images in the UI
-  const renderImages = () => {
-    return imageFiles.map((item, index) => (
-      <div key={index} className="imageBox">
-        <img src={item.previewUrl} alt={`Image ${index}`} />
-        <button className="deleteButton" onClick={() => deleteImage(index)}>
-          &times;
-        </button>
-      </div>
-    ));
-  };
-
-  // Function to delete an image from imageFiles
-  const deleteImage = (index) => {
-    const updatedImages = [...imageFiles];
-    updatedImages.splice(index, 1);
-    setImageFiles(updatedImages);
-  };
-
-  // Function to handle the conversion process
-  const convertToPdf = async () => {
-    setIsConverting(true);
-
-    try {
-      const { default: jsPDF } = await import('jspdf');
-      const doc = new jsPDF();
-      const pageWidth = doc.internal.pageSize.getWidth() - 20;
-
-      for (let i = 0; i < imageFiles.length; i++) {
-        const imageData = await loadImage(imageFiles[i].file);
-        doc.addImage(imageData, 'JPEG', 10, 10, pageWidth, 0);
-        if (i !== imageFiles.length - 1) {
-          doc.addPage();
-        }
-      }
-
-      doc.save('converted.pdf');
-      setPdfDownloadLink(doc.output('bloburl'));
-    } catch (error) {
-      console.error('Error converting images to PDF:', error);
-      // Handle error: Show a message to the user
-    } finally {
-      setIsConverting(false);
-    }
-  };
-
-  // Event listener for file input change
-  const handleFileInputChange = async (e) => {
-    const selectedFiles = Array.from(e.target.files);
-    const filesWithPreviews = await Promise.all(selectedFiles.map(async (file) => ({
-      file,
-      previewUrl: await loadImage(file),
-    })));
-    setImageFiles((prevFiles) => [...prevFiles, ...filesWithPreviews]);
-  };
-
-  // Disable the convert button if no images are added
-  const disableConvertButton = imageFiles.length === 0;
-
-  useEffect(() => {
-    renderImages();
-  }, [imageFiles]);
   return (
     <div className="container mx-auto ">
      <div className='flex justify-center items-center '>
           <h2 className='text-3xl font-medium py-4 px-2 my-8'>Convert images to PDF?</h2>
         </div>
-      <div className="py-4 flex md:flex-row flex-col justify-center border-2 my-8">
+      {/* <div className="py-4 flex md:flex-row flex-col justify-center border-2 my-8">
       
         <input type="file" id="fileInput" multiple onChange={handleFileInputChange} />
         <button
@@ -114,7 +38,21 @@ export default function Home() {
       </div>
       <div id="imageContainer" className="h-[50vh]">
         {renderImages()}
-      </div>
+      </div> */}
+<Suspense>
+
+
+  <Hero/>
+</Suspense>
+
+
+
+
+
+
+
+
+
 
       <div className=" flex md:flex-row flex-col  space-y-4 font-medium justify-around items-center p-4 m-2  ">
         <div>

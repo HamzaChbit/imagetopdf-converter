@@ -1,6 +1,6 @@
-import React from 'react'
 
-const NavBar = () => {
+
+export default function NavBar ()  {
   return (
     <header>
     <h1>Image to PDF Converter</h1>
@@ -8,4 +8,3 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
